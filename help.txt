@@ -1,0 +1,23 @@
+If Dependent Module should be available at compile time but optional at runtime, then such type
+of dependency is called Otional Dependency. We can specify optional dependency by using static
+keyword.
+Syntax: requires static <modulename>
+The static keyword is used to say that, "This dependency check is mandatory at compile time and
+optional at runtime."
+
+module moduleB
+2) {
+3) requires static moduleA;
+4) }
+At the time of compilation moduleA should be available, but at runtime it is optional. i.e., at
+runtime even moduleA is not available JVM will execute code.
+
+Sometimes we can develop library with optional dependencies.
+Eg 1: If apache http Client is available use it, otherwise use HttpURLConnection.
+Eg 2: If oracle module is available use it, otherwise use mysql module.
+
+1. When distributing a library and we may not want to force a big dependency to the client.
+2. On the other hand, a more advanced library may have performance benefits, so whatever
+module client needs, he can use.
+3. We may want to allow easily pluggable implementations of some functionality. We may provide
+implementations using all of these, and pick the one whose dependency is found.
